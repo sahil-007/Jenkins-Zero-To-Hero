@@ -12,6 +12,11 @@ pipeline {
         //Doesn't neccessary as the Jenkins will located the source file through SCM method
       }
     }
+    stage('Fix Permissions') {
+      steps {
+        sh 'sudo chown -R jenkins:jenkins $WORKSPACE || true'
+      }
+      }
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
